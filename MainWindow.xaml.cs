@@ -37,17 +37,80 @@ namespace GroupViewProject
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Group group = new Group()
+            try
             {
-                NameGroup = tbNameGroup.Text,
-                NumberGroup = tbNumberGroup.Text,
-                CuratorGroup = tbCurator.Text
-            };
+                if (!String.IsNullOrEmpty(tbNameGroup.Text) && !String.IsNullOrEmpty(tbNumberGroup.Text) && !String.IsNullOrEmpty(tbCurator.Text))
+                {
+                    Group group = new Group()
+                    {
+                        NameGroup = tbNameGroup.Text,
+                        NumberGroup = tbNumberGroup.Text,
+                        CuratorGroup = tbCurator.Text
+                    };
 
-            Main main = new Main();
+                    Main main = new Main();
 
-            main.AddGroup(group);
-            UpdListView();
+                    main.AddGroup(group);
+                    UpdListView();
+                }
+                else MessageBox.Show("Одно из полей пустое");
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(tbNameGroup.Text))
+                {
+                    Group group = new Group()
+                    {
+                        idGroup = Convert.ToInt32(tbIdGroup.Text)
+                    };
+                    Main main = new Main();
+
+                    main.DelGroup(group);
+                    UpdListView();
+                }
+                else MessageBox.Show("Одно из полей пустое");
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrWhiteSpace(tbNameGroup.Text) && !String.IsNullOrWhiteSpace(tbNumberGroup.Text) && !String.IsNullOrWhiteSpace(tbCurator.Text) && !String.IsNullOrWhiteSpace(tbIdGroup.Text))
+                {
+                    Group group = new Group()
+                    {
+                        idGroup = Convert.ToInt32(tbIdGroup.Text),
+                        NameGroup = tbNameGroup.Text,
+                        NumberGroup = tbNumberGroup.Text,
+                        CuratorGroup = tbCurator.Text
+                    };
+                    Main main = new Main();
+                    main.UpdGroup(group);
+                    UpdListView();
+                }
+                else
+                {
+                    MessageBox.Show("Одно из полей пустое");
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
     }
 }

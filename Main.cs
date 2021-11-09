@@ -33,7 +33,7 @@ namespace GroupViewProject
                     SqlCommand cmd = new SqlCommand(SqlCmd, connection);
 
                     cmd.ExecuteNonQuery();
-
+                    MessageBox.Show("Группа добавлена");
                 }
             }
             catch (Exception error)
@@ -88,7 +88,45 @@ namespace GroupViewProject
 
             return groups;
         }
+        public void DelGroup(Group group)
+        {
+            string SqlCmd = $"Delete From [dbo].[group] Where idGroup={group.idGroup};";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(SqlCmd, connection);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Группа удалена");
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+        public void UpdGroup(Group group)
+        {
+            string SqlCmd = $"Update [dbo].[group] set NameGroup='{group.NameGroup}'  ,NumberGroup ='{group.NumberGroup}',CuratorGroup ='{group.CuratorGroup}' Where idGroup={group.idGroup};";
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(strConnection))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(SqlCmd, connection);
+                    cmd.ExecuteNonQuery();
+                }
+                MessageBox.Show("Группа изменена");
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
+
     }
+
 
 
 
