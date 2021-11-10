@@ -24,15 +24,13 @@ namespace GroupViewProject
         {
             InitializeComponent();
             UpdListView();
-
-
         }
 
         void UpdListView()
         {
             Main main = new Main();
 
-            lvViewGroup.ItemsSource = main.ReadGroup();
+            dbViewGroup.ItemsSource = main.ReadGroup();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -61,7 +59,7 @@ namespace GroupViewProject
             }
             
         }
-
+        String Id;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -70,7 +68,7 @@ namespace GroupViewProject
                 {
                     Group group = new Group()
                     {
-                        idGroup = Convert.ToInt32(tbIdGroup.Text)
+                        idGroup = Convert.ToInt32(Id)
                     };
                     Main main = new Main();
 
@@ -89,11 +87,11 @@ namespace GroupViewProject
         {
             try
             {
-                if (!String.IsNullOrWhiteSpace(tbNameGroup.Text) && !String.IsNullOrWhiteSpace(tbNumberGroup.Text) && !String.IsNullOrWhiteSpace(tbCurator.Text) && !String.IsNullOrWhiteSpace(tbIdGroup.Text))
+                if (!String.IsNullOrWhiteSpace(tbNameGroup.Text) && !String.IsNullOrWhiteSpace(tbNumberGroup.Text) && !String.IsNullOrWhiteSpace(tbCurator.Text) && !String.IsNullOrWhiteSpace(Id))
                 {
                     Group group = new Group()
                     {
-                        idGroup = Convert.ToInt32(tbIdGroup.Text),
+                        idGroup = Convert.ToInt32(Id),
                         NameGroup = tbNameGroup.Text,
                         NumberGroup = tbNumberGroup.Text,
                         CuratorGroup = tbCurator.Text
@@ -110,6 +108,20 @@ namespace GroupViewProject
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
+            }
+        }
+
+        private void lvViewGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Group group = new Group();
+            group = dbViewGroup.SelectedItem as Group;
+            if (group != null)
+            {
+
+                Id = group.idGroup.ToString();
+                tbNameGroup.Text = group.NameGroup;
+                tbNumberGroup.Text = group.NumberGroup;
+                tbCurator.Text = group.CuratorGroup;
             }
         }
     }

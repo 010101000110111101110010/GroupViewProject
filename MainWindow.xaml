@@ -5,23 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GroupViewProject"
         mc:Ignorable="d"
-        Title="Group View" Height="528.061" Width="699.908">
+        Title="Group View" Height="393.061" Width="860.408">
     <Canvas>
-        <Label Content="Название специальности:" Canvas.Left="104" Canvas.Top="68" />
-        <TextBox x:Name="tbNameGroup" Height="33" Width="230" Canvas.Left="104" Canvas.Top="99" />
-        <TextBox x:Name="tbNumberGroup" Height="33" Width="230" Canvas.Left="104" Canvas.Top="176" />
-        <TextBox x:Name="tbCurator" Height="33" Width="230" Canvas.Left="104" Canvas.Top="259" />
-        <Label Content="Номер группы:" Canvas.Left="104" Canvas.Top="150" />
-        <Label Content="ФИО Куратора:" Canvas.Left="104" Canvas.Top="233" />
-        <Button x:Name="btnAdd" Content="Добавить" Height="44" Width="180" Canvas.Left="44" Canvas.Top="355" VerticalAlignment="Top" HorizontalAlignment="Center" Click="btnAdd_Click"/>
-
-        <ListView x:Name="lvViewGroup"  Height="300" Width="269" Canvas.Left="379" Canvas.Top="99" DisplayMemberPath="NumberGroup" >
-
-        </ListView>
-        <Label Content="Список групп:" Canvas.Left="379" Canvas.Top="73" />
-        <TextBox x:Name="tbIdGroup" Height="23" Canvas.Left="104" TextWrapping="Wrap" Text="" Canvas.Top="314" Width="120"/>
-        <Label Content="ID" Canvas.Left="104" Canvas.Top="292"/>
-        <Button Content="Удалить" Canvas.Left="44" Canvas.Top="418" Width="82" Click="Button_Click"/>
-        <Button Content="Обновить" Canvas.Left="131" Canvas.Top="418" Width="75" Click="Button_Click_1"/>
+        <Label Content="Название специальности:" Canvas.Left="14" Canvas.Top="14" />
+        <TextBox x:Name="tbNameGroup" Height="33" Width="230" Canvas.Left="14" Canvas.Top="45" />
+        <TextBox x:Name="tbNumberGroup" Height="33" Width="230" Canvas.Left="14" Canvas.Top="122" />
+        <TextBox x:Name="tbCurator" Height="33" Width="230" Canvas.Left="14" Canvas.Top="205" />
+        <Label Content="Номер группы:" Canvas.Left="14" Canvas.Top="96" />
+        <Label Content="ФИО Куратора:" Canvas.Left="14" Canvas.Top="179" />
+        <Button x:Name="btnAdd" Content="Добавить" Height="44" Width="180" Canvas.Left="14" Canvas.Top="256" VerticalAlignment="Top" HorizontalAlignment="Center" Click="btnAdd_Click"/>
+        <Label Content="Список групп:" Canvas.Left="525" Canvas.Top="14" />
+        <Button Content="Удалить" Canvas.Left="14" Canvas.Top="305" Width="82" Click="Button_Click"/>
+        <Button Content="Обновить" Canvas.Left="119" Canvas.Top="305" Width="75" Click="Button_Click_1"/>
+        <DataGrid x:Name="dbViewGroup" Height="280" Canvas.Left="286" Canvas.Top="45" Width="543" SelectionChanged="lvViewGroup_SelectionChanged"/>
     </Canvas>
 </Window>

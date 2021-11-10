@@ -12,7 +12,7 @@ namespace GroupViewProject
     {
 
         // Строка подключения к БД
-        string strConnection = @"Data Source=DESKTOP-MU6UFKI\SQLEXPRESS;Initial Catalog=groupall;Integrated Security=True";
+        string strConnection = @"Data Source=DESKTOP-EJOL985\SQLEXPRESS;Initial Catalog=groupall;Integrated Security=True";
         
         /// <summary>
         /// Добавления данных о группе 
@@ -73,6 +73,7 @@ namespace GroupViewProject
                         {
                             groups.Add(new Group()
                             {
+                                idGroup = sqlDataReader.GetInt32(0),
                                 NameGroup = sqlDataReader.GetString(1),
                                 NumberGroup = sqlDataReader.GetString(2),
                                 CuratorGroup = sqlDataReader.GetString(3)
